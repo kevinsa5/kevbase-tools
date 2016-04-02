@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>BMI Calculator</title>
+		<link rel="icon"  type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAQAAVzABAEAjBQAaDwYAWjUGAGE6CQBrQQ0ATS8PAFhAJwBUQC8AbFI6AHVXPACBZk4A4NrWAPb19QAAAAAAAMmZmZmZmgAJIwAAAAAAcMIjPjA+PjAKpxIuMDMzMAm0Ii4zMzMACaIiLt3dMAAJtyIuIzPQAAm0Un5yM+IzKLRkfncy4iIotRF+dyLkIiq0QX53F+EiGrQUTkd34iIatEVu7u5iIVrBVVRBRFRVbAtGZGZla2uwAMu7u7u8vADAAwAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAADAAwAA" />
+		<style type="text/css">
+	body {
+	  background-color: #333; color: #bbb; line-height: normal;
+	  font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+	  font-size: 11px; font-weight: normal; text-decoration: none;
+		  line-height: 1.5em;
+	}
+	a img { 
+		border: 0px solid transparent;
+	}
+	a, a:link, a:visited, a:active, a:hover { 
+		color: #cdcdcd; text-decoration: underline;
+	}
+	h1 {
+	    font-family: Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+		width: 100%; letter-spacing: 0.1em;
+		margin-bottom: 1em; font-size: 1.65em;
+	}
+	#content { 
+		margin: 50px auto 0px auto; padding: 25px 25px 15px 25px;
+		width: 200px; min-width: 300px; overflow: auto;
+		border-left: 1px solid #444; border-top: 1px solid #444; 
+		border-right: 1px solid #333; border-bottom: 1px solid #333;
+		background-color: #3d3d3d;
+	}
+		</style>
+	<script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		function calculate(){
+			var height = parseFloat($('#feet').val()) * 12 + parseFloat($('#inches').val());
+			var score = 703 * parseFloat($('#weight').val()) / Math.pow(height,2);
+			$('#result').text(score);
+		}
+	</script>
+	</head>
+	<body>
+		<a href="/">Home</a>
+		<div id="content">
+			<h1>BMI Calculator</h1>
+
+			<div>
+			<p>Body Weight (lb):<input id="weight" size="4" type="text" value=""/></p>
+			<p>Height:<input id="feet" size="4" type="text" value=""/>(ft) <input id="inches" size="4" type="text" value=""/>(in)</p>
+			<p><button id="updateButton" onclick="calculate();">Calculate</button></p>
+			<p><span id="result"></span>
+	    	</div>
+		<div>
+<p>BMI Categories: </p>
+<p>Underweight = &lt;18.5 </p>
+<p>Normal weight = 18.5-24.9 </p> 
+<p>Overweight = 25-29.9  </p>
+<p>Obesity = BMI of 30 or greater </p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>WILKS Calculator</title>
+		<link rel="icon"  type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAQAAVzABAEAjBQAaDwYAWjUGAGE6CQBrQQ0ATS8PAFhAJwBUQC8AbFI6AHVXPACBZk4A4NrWAPb19QAAAAAAAMmZmZmZmgAJIwAAAAAAcMIjPjA+PjAKpxIuMDMzMAm0Ii4zMzMACaIiLt3dMAAJtyIuIzPQAAm0Un5yM+IzKLRkfncy4iIotRF+dyLkIiq0QX53F+EiGrQUTkd34iIatEVu7u5iIVrBVVRBRFRVbAtGZGZla2uwAMu7u7u8vADAAwAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAADAAwAA" />
+		<style type="text/css">
+	body {
+	  background-color: #333; color: #bbb; line-height: normal;
+	  font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+	  font-size: 11px; font-weight: normal; text-decoration: none;
+		  line-height: 1.5em;
+	}
+	a img { 
+		border: 0px solid transparent;
+	}
+	a, a:link, a:visited, a:active, a:hover { 
+		color: #cdcdcd; text-decoration: underline;
+	}
+	h1 {
+	    font-family: Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+		width: 100%; letter-spacing: 0.1em;
+		margin-bottom: 1em; font-size: 1.65em;
+	}
+	#content { 
+		margin: 50px auto 0px auto; padding: 25px 25px 15px 25px;
+		width: 200px; min-width: 300px; overflow: auto;
+		border-left: 1px solid #444; border-top: 1px solid #444; 
+		border-right: 1px solid #333; border-bottom: 1px solid #333;
+		background-color: #3d3d3d;
+	}
+		</style>
+	<script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		function calculate(){
+			if($('#sex').val() == "Male"){
+				a = -216.0475144;
+				b = 16.2606339;
+				c = -0.002388645;
+				d = -0.00113732;
+				e = 7.01863e-6;
+				f = -1.291e-8;	
+			} else {
+				a = 594.31747775582;
+				b = -27.23842536447;
+				c = 0.82112226871;
+				d = -0.00930733913;
+				e = 0.00004731582;
+				f = -0.00000009054;
+			}
+			var x = parseFloat($('#weight').val())*0.453592;
+			var coeff = 500 / (a + b*x + c*x*x + d*x*x*x + e*x*x*x*x + f*x*x*x*x*x);
+			var score = (parseFloat($('#squat').val()) + 
+				     parseFloat($('#bench').val()) +
+				     parseFloat($('#deadlift').val()))*0.453592 * coeff;
+			$('#result').text(score);
+		}
+	</script>
+	</head>
+	<body>
+		<a href="/">Home</a>
+		<div id="content">
+			<h1>WILKS Calculator</h1>
+
+			<div>
+			<select id="sex">
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+			</select>
+			<p>Body Weight (lb):<input id="weight" size="4" type="text" value=""/></p>
+			<p>Squat 1rm (lb):<input id="squat" size="4" type="text" value=""/></p>
+			<p>Bench Press 1rm (lb):<input id="bench" size="4" type="text" value=""/></p>
+			<p>Deadlift 1rm (lb):<input id="deadlift" size="4" type="text" value=""/></p>
+			<p><button id="updateButton" onclick="calculate();">Calculate</button></p>
+			<p><span id="result"></span>
+	    	</div>
+	</body>
+</html>
